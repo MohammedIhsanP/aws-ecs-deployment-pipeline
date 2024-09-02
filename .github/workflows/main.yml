@@ -73,30 +73,30 @@ jobs:
         run: |
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
 
-      - name: Fill in the new image ID in the Amazon ECS task definition
-        id: task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v1
-        with:
-          task-definition: nodejs-webapp-task-definition.json
-          container-name: nodejs-webapp
-          image: ${{ secrets.ECR_REPOSITORY }}:latest 
+      # - name: Fill in the new image ID in the Amazon ECS task definition
+      #   id: task-def
+      #   uses: aws-actions/amazon-ecs-render-task-definition@v1
+      #   with:
+      #     task-definition: nodejs-webapp-task-definition.json
+      #     container-name: nodejs-webapp
+      #     image: ${{ secrets.ECR_REPOSITORY }}:latest 
 
-      - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-        with:
-          task-definition: nodejs-webapp-task-definition.json
-          service: ${{ secrets.ECS_SERVICE }}
-          cluster: ${{ secrets.ECS_CLUSTER }}
-          wait-for-service-stability: true
-      # - name: Deploy to ECS
-      #   id: deploy
-      #   run: |
-      #     aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_SERVICE }} --force-new-deployment
+      # - name: Deploy Amazon ECS task definition
+      #   uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      #   with:
+      #     task-definition: nodejs-webapp-task-definition.json
+      #     service: ${{ secrets.ECS_SERVICE }}
+      #     cluster: ${{ secrets.ECS_CLUSTER }}
+      #     wait-for-service-stability: true
+      - name: Deploy to ECS
+        id: deploy
+        run: |
+          aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_SERVICE }} --force-new-deployment
 
-      # - name: Wait for deployment to complete
-      #   run: |
-      #     echo "Waiting for deployment to complete..."
-      #     sleep 60 # Adjust based on your application's needs
+      - name: Wait for deployment to complete
+        run: |
+          echo "Waiting for deployment to complete..."
+          sleep 60 # Adjust based on your application's needs
       #     aws ecs wait services-stable --cluster ${{ secrets.ECS_CLUSTER }} --services ${{ secrets.ECS_SERVICE }}
 
       # - name: Run integration tests
