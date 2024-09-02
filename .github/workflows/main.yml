@@ -21,12 +21,10 @@ jobs:
 
       - name: Install Docker
         run: |
-          sudo apt-get update
-          sudo apt-get remove -y containerd
-          sudo apt-get install -y containerd.io
-          sudo apt-get install -y docker.io
-          sudo systemctl start docker
-          sudo systemctl enable docker
+          sudo apt-get remove containerd.io
+          sudo apt install docker.io docker-compose -y
+          systemctl start docker
+          sudo gpasswd -a $USER docker
 
       - name: Build Docker image
         run: |
