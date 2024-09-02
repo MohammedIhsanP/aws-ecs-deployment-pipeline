@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/nodejs-webapp:1",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/nodejs-webapp:2",
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
-            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp",
+            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp:latest",
             "cpu": 0,
             "portMappings": [
                 {
