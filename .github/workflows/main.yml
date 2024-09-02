@@ -51,15 +51,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: List files in the directory
-        run: ls -la
+
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: nodejs-webapp-task-definition.json
           container-name: nodejs-webapp
-          image: ${{ secrets.ECR_REPOSITORY }}:latest    
+          image: ${{ secrets.ECR_REPOSITORY }}:latest 
+             
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:

@@ -3,7 +3,7 @@
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
-            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp:latest",
+            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp",
             "cpu": 0,
             "portMappings": [
                 {
