@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/nodejs-webapp:2",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/webapp:2",
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
-            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp",
+            "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp:latest",
             "cpu": 0,
             "portMappings": [
                 {
@@ -30,7 +30,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/",
+                    "awslogs-group": "/ecs/webapp",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -42,8 +42,7 @@
             "systemControls": []
         }
     ],
-    "family": "nodejs-webapp",
-    "taskRoleArn": "arn:aws:iam::794038212546:role/ecsTaskExecutionRole",
+    "family": "webapp",
     "executionRoleArn": "arn:aws:iam::794038212546:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 2,
@@ -66,9 +65,6 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
         },
         {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
             "name": "ecs.capability.execution-role-ecr-pull"
         },
         {
@@ -87,7 +83,7 @@
         "FARGATE"
     ],
     "requiresCompatibilities": [
-        "EC2"
+        "FARGATE"
     ],
     "cpu": "1024",
     "memory": "3072",
@@ -95,7 +91,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-02T11:23:10.165Z",
+    "registeredAt": "2024-09-02T13:53:47.981Z",
     "registeredBy": "arn:aws:iam::794038212546:root",
     "tags": []
 }
