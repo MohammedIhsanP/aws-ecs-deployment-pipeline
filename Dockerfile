@@ -1,5 +1,5 @@
 # Use the Node.js image for both build and production
-FROM node:14
+FROM node:20
 
 # Set the working directory in the container
 WORKDIR /app
