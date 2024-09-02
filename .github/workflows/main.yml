@@ -19,13 +19,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install Docker
-        run: |
-          sudo apt-get remove containerd.io
-          sudo apt install docker.io docker-compose -y
-          systemctl start docker
-          sudo gpasswd -a $USER docker
-
       - name: Build Docker image
         run: |
           docker build -t ${{ secrets.ECR_REPOSITORY }}:latest .
