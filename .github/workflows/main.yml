@@ -49,6 +49,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: List files in the directory
+        run: ls -la
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
