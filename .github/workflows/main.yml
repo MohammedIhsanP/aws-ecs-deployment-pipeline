@@ -82,10 +82,11 @@ jobs:
           image: ${{ secrets.ECR_REPOSITORY }}:latest 
 
       - name: Deploy Amazon ECS task definition
-        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v3
         with:
           task-definition: nodejs-webapp-task-definition.json
           service: ${{ secrets.ECS_SERVICE }}
+          region: ${{ secrets.AWS_REGION }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
       # - name: Deploy to ECS
