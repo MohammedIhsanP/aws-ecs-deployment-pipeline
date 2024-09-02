@@ -85,7 +85,7 @@ jobs:
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: nodejs-webapp-task-definition.json
-          service: ${{ secrets.ECS_SERVICE }}
+          service: webapp
           region: ${{ secrets.AWS_REGION }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
