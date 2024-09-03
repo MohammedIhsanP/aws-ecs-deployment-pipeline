@@ -1,22 +1,23 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/webapp:2",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/ecs-td:1",
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
             "image": "794038212546.dkr.ecr.ap-southeast-2.amazonaws.com/wikiwebapp:latest",
-            "cpu": 0,
+            "cpu": 256,
+            "memory": 512,
             "portMappings": [
                 {
                     "name": "wikiwebapp-80-tcp",
                     "containerPort": 80,
-                    "hostPort": 80,
+                    "hostPort": 0,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 },
                 {
                     "name": "wikiwebapp-3000-tcp",
                     "containerPort": 3000,
-                    "hostPort": 3000,
+                    "hostPort": 0,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
@@ -30,7 +31,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/webapp",
+                    "awslogs-group": "/ecs/ecs-td",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -42,10 +43,10 @@
             "systemControls": []
         }
     ],
-    "family": "webapp",
+    "family": "ecs-td",
     "executionRoleArn": "arn:aws:iam::794038212546:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "revision": 2,
+    "networkMode": "bridge",
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -71,19 +72,15 @@
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
         {
-            "name": "ecs.capability.task-eni"
-        },
-        {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
         }
     ],
     "placementConstraints": [],
     "compatibilities": [
-        "EC2",
-        "FARGATE"
+        "EC2"
     ],
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ],
     "cpu": "1024",
     "memory": "3072",
@@ -91,7 +88,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-02T13:53:47.981Z",
+    "registeredAt": "2024-09-03T06:12:30.819Z",
     "registeredBy": "arn:aws:iam::794038212546:root",
     "tags": []
 }
