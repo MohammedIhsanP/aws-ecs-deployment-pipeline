@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/ecs-td:1",
+    "family": "ecs-td-nq",
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
@@ -10,24 +10,22 @@
                 {
                     "name": "wikiwebapp-80-tcp",
                     "containerPort": 80,
-                    "hostPort": 0,
+                    "hostPort": 80,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 },
                 {
                     "name": "wikiwebapp-3000-tcp",
                     "containerPort": 3000,
-                    "hostPort": 0,
+                    "hostPort": 3000,
                     "protocol": "tcp",
                     "appProtocol": "http"
                 }
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -37,48 +35,13 @@
                     "max-buffer-size": "25m",
                     "awslogs-region": "ap-southeast-2",
                     "awslogs-stream-prefix": "ecs"
-                },
-                "secretOptions": []
+                }
             },
             "systemControls": []
         }
     ],
-    "family": "ecs-td",
     "executionRoleArn": "arn:aws:iam::794038212546:role/ecsTaskExecutionRole",
-    "networkMode": "bridge",
-    "revision": 1,
-    "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.ecr-auth"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
-        },
-        {
-            "name": "ecs.capability.execution-role-ecr-pull"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
-        }
-    ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2"
-    ],
+    "networkMode": "host",
     "requiresCompatibilities": [
         "EC2"
     ],
@@ -87,8 +50,5 @@
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
-    },
-    "registeredAt": "2024-09-03T06:12:30.819Z",
-    "registeredBy": "arn:aws:iam::794038212546:root",
-    "tags": []
+    }
 }
