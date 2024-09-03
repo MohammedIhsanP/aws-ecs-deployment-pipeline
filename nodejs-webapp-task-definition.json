@@ -1,5 +1,5 @@
 {
-    "family": "ecs-td-nq",
+    "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:794038212546:task-definition/ecs-td-nq:2",
     "containerDefinitions": [
         {
             "name": "wikiwebapp",
@@ -40,8 +40,42 @@
             "systemControls": []
         }
     ],
+    "family": "ecs-td-nq",
     "executionRoleArn": "arn:aws:iam::794038212546:role/ecsTaskExecutionRole",
     "networkMode": "host",
+    "revision": 2,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
     "requiresCompatibilities": [
         "EC2"
     ],
@@ -50,5 +84,8 @@
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
-    }
+    },
+    "registeredAt": "2024-09-03T13:47:31.283Z",
+    "registeredBy": "arn:aws:iam::794038212546:root",
+    "tags": []
 }
