@@ -28,8 +28,11 @@ RUN apk add --no-cache nginx
 # Copy the NGINX configuration file
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose the ports
+# Remove the default configuration if it exists
+RUN rm -f /etc/nginx/conf.d/default.conf.disabled
+
+# Expose the port
 EXPOSE 80
 
-# Start NGINX and the Node.js application
+# Entry point to start NGINX and Node.js application
 CMD ["sh", "-c", "nginx -g 'daemon off;' & npm start"]
