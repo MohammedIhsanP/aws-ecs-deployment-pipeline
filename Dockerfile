@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM node:20 AS builder
+FROM node:20-alpine AS builder
 
 # Set the working directory in the container
 WORKDIR /app
@@ -14,14 +14,13 @@ RUN npm install
 COPY . .
 
 # Stage 2: Create the production image
-FROM node:20-slim
+FROM node:20-alpine
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy only the necessary files from the build stage
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/views/* ./
+COPY --from=builder /app ./
 
 # Expose the port the application will run on
 EXPOSE 3000
