@@ -1,5 +1,5 @@
 #########################################################################
-CI/CD Pipeline for Node.js Web Application with AWS ECS and ECR
+     CI/CD Pipeline for Node.js Web Application with AWS ECS and ECR
 #########################################################################
 This repository contains a GitHub Actions workflow to automate the deployment of a simple Node.js web application to AWS ECS (Elastic Container Service) using Amazon ECR (Elastic Container Registry) for storing Docker images. The pipeline includes steps for building and optimizing the Docker image, pushing it to Amazon ECR, deploying it to ECS, performing integration tests, and rolling back if the deployment fails.
 
