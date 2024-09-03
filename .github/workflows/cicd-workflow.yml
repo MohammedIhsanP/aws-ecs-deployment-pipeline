@@ -72,9 +72,3 @@ jobs:
           region: ${{ secrets.AWS_REGION }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
-
-      - name: Rollback on failure
-        if: failure()
-        run: |
-          echo "Rolling back deployment..."
-          aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_SERVICE }} --rollback
