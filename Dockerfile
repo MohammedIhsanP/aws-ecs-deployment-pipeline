@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Stage 2: Create the production image
-FROM node:20-alpine
+FROM gcr.io/distroless/nodejs18-debian11
 
 # Set the working directory in the container
 WORKDIR /app
