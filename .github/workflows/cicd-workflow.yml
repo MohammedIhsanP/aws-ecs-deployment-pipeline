@@ -19,12 +19,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      # - name: Set up AWS CLI # Install AWS CLI if not pre-installed
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y python3-pip
-      #     pip3 install awscli
-
       - name: Configure AWS CLI
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -57,12 +51,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      # - name: Set up AWS CLI # Install AWS CLI if not pre-installed
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt-get install -y python3-pip
-      #     pip3 install awscli
-
       - name: Configure AWS CLI
         run: |
           aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -89,16 +77,6 @@ jobs:
           region: ${{ secrets.AWS_REGION }}
           cluster: ${{ secrets.ECS_CLUSTER }}
           wait-for-service-stability: true
-      # - name: Deploy to ECS
-      #   id: deploy
-      #   run: |
-      #     aws ecs update-service --cluster ${{ secrets.ECS_CLUSTER }} --service ${{ secrets.ECS_SERVICE }} --force-new-deployment
-
-      # - name: Wait for deployment to complete
-      #   run: |
-      #     echo "Waiting for deployment to complete..."
-      #     sleep 60 # Adjust based on your application's needs
-      #     aws ecs wait services-stable --cluster ${{ secrets.ECS_CLUSTER }} --services ${{ secrets.ECS_SERVICE }}
 
       # - name: Run integration tests
       #   run: ./run_tests.sh
